@@ -5,33 +5,28 @@ import (
 )
 
 func AssertTrueM(t *testing.T, cond bool, msg string) {
-	if !cond {
-		t.Fatal(msg)
-	}
+	if !cond { t.Fatal(msg) }
 }
-
 func AssertTrue(t *testing.T, cond bool) {
 	AssertTrueM(t, cond, "")
 }
 
-func AssertFalseM(t *testing.T, cond bool, msg string) {
-	if cond {
-		t.Fatal(msg)
-	}
-}
 
+func AssertFalseM(t *testing.T, cond bool, msg string) {
+	if cond { t.Fatal(msg) }
+}
 func AssertFalse(t *testing.T, cond bool) {
 	AssertTrueM(t, cond, "")
 }
 
+func AssertEqualM(t *testing.T, o1 interface{}, o2 interface{}, msg string) {
+	if o1 != o2 { t.Fatalf(msg) }
+}
+
 func AssertNil(t *testing.T, o interface{}) {
-	if o != nil {
-		t.Fatalf("o is not Nil: %s", o)
-	}
+	if o != nil { t.Fatalf("o is not Nil: %s", o) }
 }
 
 func AssertNotNil(t *testing.T, o interface{}) {
-	if o == nil {
-		t.Fatal("o is Nil")
-	}
+	if o == nil { t.Fatal("o is Nil") }
 }
