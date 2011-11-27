@@ -1,6 +1,7 @@
 package gt
 
 import (
+	"reflect"
 	"testing"
 )
 
@@ -20,7 +21,7 @@ func AssertFalse(t *testing.T, cond bool) {
 }
 
 func AssertEqualM(t *testing.T, expected interface{}, actual interface{}, msg string) {
-	if expected != actual {
+	if !reflect.DeepEqual(expected, actual) {
 		t.Fatalf("%s [expected: %s, actual: %s]", msg, expected, actual)
 	}
 }
