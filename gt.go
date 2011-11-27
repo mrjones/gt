@@ -19,8 +19,10 @@ func AssertFalse(t *testing.T, cond bool) {
 	AssertTrueM(t, cond, "")
 }
 
-func AssertEqualM(t *testing.T, o1 interface{}, o2 interface{}, msg string) {
-	if o1 != o2 { t.Fatalf(msg) }
+func AssertEqualM(t *testing.T, expected interface{}, actual interface{}, msg string) {
+	if expected != actual {
+		t.Fatalf("%s [expected: %s, actual: %s]", msg, expected, actual)
+	}
 }
 
 func AssertNil(t *testing.T, o interface{}) {
